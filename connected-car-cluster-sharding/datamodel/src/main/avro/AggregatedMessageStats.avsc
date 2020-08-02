@@ -8,12 +8,16 @@
             "type": "long"
          },
          {
+            "name": "carId",
+            "type": "int"
+         },
+         {
              "name": "windowDuration",
              "type": "long"
           },
          {
              "name": "numberOfMessages",
-             "type": "int"
+             "type": "long"
          },
          {
              "name": "maxSpeed",

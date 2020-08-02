@@ -49,12 +49,12 @@ class ConnectedCarAggregator extends SparkStreamlet {
         inDataset
           .withColumn("ts", $"timestamp".cast(TimestampType))
           .withWatermark("ts", s"100 milliseconds")
-          .groupBy(window($"ts", s"1 second"))
-          .agg(count("*").as("numberOfMessages"))
+          .groupBy(window($"ts", s"1 second"), $"carId")
+          .agg(count("*").as("numberOfMessages"), max($"speed").as("maxSpeed"))
           .withColumn("windowDuration", $"window.end".cast(LongType) - $"window.start".cast(LongType))
 
       query
-        .select($"window.start".cast(LongType).as("startTime"), $"windowDuration", $"numberOfMessages")
+        .select($"window.start".cast(LongType).as("startTime"), $"windowDuration", $"numberOfMessages", $"maxSpeed")
         .as[AggregatedMessageStats]
     }
   }
