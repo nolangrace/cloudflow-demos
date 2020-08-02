@@ -1,0 +1,25 @@
+{
+    "namespace": "connectedcar.data",
+    "type": "record",
+    "name": "AggregatedMessageStats",
+    "fields":[
+         {
+            "name": "startTime",
+            "type": "long"
+         },
+         {
+             "name": "windowDuration",
+             "type": "long"
+          },
+         {
+             "name": "numberOfMessages",
+             "type": "int"
+         },
+         {
+             "name": "maxSpeed",
+             "type": "double"
+         }
+
+    ]
+}
+
